@@ -4,23 +4,25 @@ import pandas as pd
 from pandas._testing import assert_frame_equal
 from canalyse.parser import ConductivityParser, ConductivityFormatter
 
-conductivity_file = (
-    f"{os.path.dirname(os.path.abspath(__file__))}/assets/conductivity.dot"
-)
-
 
 class TestParser(unittest.TestCase):
+    def setUp(self) -> None:
+        self.conductivity_file = (
+            f"{os.path.dirname(os.path.abspath(__file__))}/assets/conductivity.dot"
+        )
+        return super().setUp()
+
     def test_conductivity_parser(self):
         parser = ConductivityParser()
 
-        df = parser.run(conductivity_file)
+        df = parser.run(self.conductivity_file)
         # Has header expected
         reference_header = ["source", "target", "conductivity"]
         assert all(df.columns == reference_header)
 
     def test_conductivity_formatter(self):
         parser = ConductivityParser()
-        df = parser.run(conductivity_file)
+        df = parser.run(self.conductivity_file)
         formatter = ConductivityFormatter()
         new_df = formatter.run(df)
         reference_df = pd.DataFrame(
