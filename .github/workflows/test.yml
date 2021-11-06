@@ -16,8 +16,18 @@ jobs:
         with:
           python-version: "3.8"
       
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
+
+      - name: Current directory
+        run: pwd
       
       - name: Run test
         run: python -m unittest
