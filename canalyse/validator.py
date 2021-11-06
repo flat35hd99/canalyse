@@ -9,3 +9,11 @@ class ConductivityValidator:
     def deviation_is_more_than(self, threshold):
         deviation = self.df["conductivity"].std()
         return deviation > threshold
+
+    def average_is_less_than(self, threshold):
+        average = self.df["conductivity"].mean()
+        return average < threshold
+
+    def average_is_more_than(self, threshold):
+        average = self.df["conductivity"].mean()
+        return average > threshold
