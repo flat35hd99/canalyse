@@ -32,11 +32,12 @@ jobs:
 
       - name: Run black
         uses: rickstaa/action-black@v1
-
-      - name: Run flake8
-        uses: suo/flake8-github-action@v1
+        id: action_black
         with:
-          checkName: test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   
+          black_args: "."
+          
+      - name: Annotate diff changes using reviewdog
+        if: steps.action_black.outputs.is_formatted == 'true'
+        uses: reviewdog/action-suggester@v1
+        with:
+          tool_name: blackfmt
