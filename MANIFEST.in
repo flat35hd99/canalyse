@@ -1,0 +1,2 @@
+include versioneer.py
+include canalyse/_version.py
