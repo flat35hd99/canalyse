@@ -13,13 +13,13 @@ class TestValidator(unittest.TestCase):
         self.df = parser.run(conductivity_file)
         return super().setUp()
 
-    def test_deviation(self):
+    def test_standard_deviation(self):
         validator = ConductivityValidator(self.df)
 
-        result = validator.deviation_is_less_than(0.005)
+        result = validator.standard_deviation_is_less_than(0.005)
         assert result
 
-        result = validator.deviation_is_more_than(0.004)
+        result = validator.standard_deviation_is_more_than(0.004)
         assert result
 
     def test_average(self):
@@ -29,4 +29,13 @@ class TestValidator(unittest.TestCase):
         assert result
 
         result = validator.average_is_more_than(0.01)
+        assert result
+
+    def test_variance(self):
+        validator = ConductivityValidator(self.df)
+
+        result = validator.variance_is_less_than(2.1e-5)
+        assert result
+
+        result = validator.variance_is_more_than(2.0e-5)
         assert result
