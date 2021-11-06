@@ -11,6 +11,7 @@ jobs:
     name: Test package
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Setup python
         uses: actions/setup-python@v2
         with:
@@ -25,8 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
-        working-directory: ./
       
       - name: Run test
         run: python -m unittest
-        working-directory: ./
