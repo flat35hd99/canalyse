@@ -17,13 +17,7 @@ jobs:
           python-version: "3.8"
       
       - name: Install dependencies
-        run: pip install unittest-xml-reporting
+        run: pip install -r requirements-dev.txt
       
       - name: Run test
-        run: python -m xmlrunner --output test_result
-      
-      - name: Upload test result
-        uses: EnricoMi/publish-unit-test-result-action@v1
-        if: always()
-        with:
-          files: test_result/**/*.xml
+        run: python -m unittest
