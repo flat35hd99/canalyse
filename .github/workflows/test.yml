@@ -23,11 +23,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
-        run: pip install -r requirements-dev.txt
-
       - name: Current directory
         run: pwd
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
       
       - name: Run test
         run: python -m unittest
