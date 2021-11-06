@@ -6,6 +6,15 @@ import re
 
 
 class ConductivityParser:
+    
+
+
+
+
+
+
+
+
     def __init__(self, header=["source", "target", "conductivity"]):
         self.header = header
 
