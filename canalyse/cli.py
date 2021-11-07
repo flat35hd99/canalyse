@@ -63,7 +63,7 @@ def conductivity(grater_than, less_than, quantity, filename):
 
 @cli.command()
 def current():
-    click.echo("fugafuga")
+    click.echo("Current calculation is not supported now.")
 
 
 if __name__ == "__main__":
