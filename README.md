@@ -19,7 +19,7 @@ Verify statistical quantity of data
 The variance should be grater than:
 
 ```console
-canalyse --quantity=variance --grater-than 2.0e-5 conductivity.dot
+canalyse conductivity --quantity=variance --grater-than 2.0e-5 conductivity.dot
 ```
 
 The variance should be less than:
