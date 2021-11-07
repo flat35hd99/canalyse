@@ -21,6 +21,13 @@ class TestCliConductivity(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(len(result.output), 0)
 
+        result = self.cli.invoke(
+            conductivity,
+            ["--quantity=std", "--grater-than", 100.0, self.conductivity_file],
+        )
+        self.assertEqual(result.exit_code, 0)
+        self.assertNotEqual(len(result.output), 0)
+
     def test_standard_deviation_less_than(self):
         result = self.cli.invoke(
             conductivity,
@@ -28,6 +35,13 @@ class TestCliConductivity(unittest.TestCase):
         )
         self.assertEqual(result.exit_code, 0)
         self.assertEqual(len(result.output), 0)
+
+        result = self.cli.invoke(
+            conductivity,
+            ["--quantity=std", "--less-than", 0.0, self.conductivity_file],
+        )
+        self.assertEqual(result.exit_code, 0)
+        self.assertNotEqual(len(result.output), 0)
 
     def test_average_grater_than(self):
         result = self.cli.invoke(
