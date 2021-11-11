@@ -1,4 +1,4 @@
-residue_id,residue_name,atom_serial_number,volume
+residue_number,residue_name,atom_serial_number,volume
 1,MET,190,189.45101287195348
 2,LEU,551,172.83697407559532
 3,SER,484,95.91034046888684

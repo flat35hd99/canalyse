@@ -48,7 +48,7 @@ class BiovoronoiVolumeParser:
         df = pd.read_csv(
             filename,
             dtype={
-                "residue_id": int64,
+                "residue_number": int64,
                 "residue_name": str,
                 "atom_serial_number": int64,
                 "volume": float64,
@@ -115,6 +115,10 @@ class VldpVolumeFormatter:
     def run(self, df):
         df = df[["MOL", "NUMMOL", "VOLUME"]]
         df = df.rename(
-            columns={"MOL": "residue_name", "NUMMOL": "residue_id", "VOLUME": "volume"}
+            columns={
+                "MOL": "residue_name",
+                "NUMMOL": "residue_number",
+                "VOLUME": "volume",
+            }
         )
         return df

@@ -70,7 +70,7 @@ class TestVolumeParser(unittest.TestCase):
         df = parser.run(self.truncated_biovoronoi_file)
         excepted = pd.DataFrame(
             {
-                "residue_id": [int(1), int(2), int(3)],
+                "residue_number": [int(1), int(2), int(3)],
                 "residue_name": ["MET", "LEU", "SER"],
                 "atom_serial_number": [190, 551, 484],
                 "volume": [189.451013, 172.836974, 95.910340],
@@ -87,7 +87,7 @@ class TestVolumeParser(unittest.TestCase):
 
         expected = pd.DataFrame(
             {
-                "residue_id": [int(1), int(2), int(3)],
+                "residue_number": [int(1), int(2), int(3)],
                 "residue_name": ["MET", "LEU", "SER"],
                 "volume": [189.451013, 172.836974, 95.910340],
             }
@@ -350,6 +350,6 @@ class TestVolumeParser(unittest.TestCase):
         formatter = VldpVolumeFormatter()
         formatted_df = formatter.run(df)
 
-        expected_header = ["residue_id", "residue_name", "volume"]
+        expected_header = ["residue_number", "residue_name", "volume"]
         is_ok = set(expected_header) == set(formatted_df.columns)
         self.assertTrue(is_ok)
