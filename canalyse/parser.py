@@ -35,8 +35,8 @@ class ConductivityFormatter:
     def run(self, df):
         df = df.copy()
         for header in ["source", "target"]:
-            df[f"{header}_number"] = df[header].map(get_number)
-            df[f"{header}_residue"] = df[header].map(get_residue)
+            df[f"{header}_residue_number"] = df[header].map(get_number)
+            df[f"{header}_residue_name"] = df[header].map(get_residue)
         return df
 
 

@@ -41,10 +41,10 @@ class TestConductivityParser(unittest.TestCase):
                     float(0.0214987056692),
                     float(0.0124389690164),
                 ],
-                "source_number": [1, 1, 1],
-                "source_residue": ["MET", "MET", "MET"],
-                "target_number": [36, 5, 4],
-                "target_residue": ["PHE", "GLU", "ASP"],
+                "source_residue_number": [1, 1, 1],
+                "source_residue_name": ["MET", "MET", "MET"],
+                "target_residue_number": [36, 5, 4],
+                "target_residue_name": ["PHE", "GLU", "ASP"],
             }
         )
         assert_frame_equal(new_df, reference_df)
